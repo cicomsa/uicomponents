@@ -3,14 +3,14 @@ import PropTypes from 'prop-types'
 import AccordionSection from '../AccordionSection'
 
 const Accordion = ({ accordionData }) => {
-  const elementsRef = useRef(accordionData.map(() => createRef()))
+  const sectionsRef = useRef(accordionData.map(() => createRef()))
 
   return (
     accordionData.map((section, i) => {
       return (
         <AccordionSection
           section={section}
-          reference={elementsRef.current[i]}
+          reference={sectionsRef.current[i]}
           key={section.title}
         />
       )
