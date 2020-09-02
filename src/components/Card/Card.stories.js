@@ -17,6 +17,12 @@ ContentFit.args = {
 
 export const FixedWidth = Template.bind({});
 FixedWidth.args = {
+  width: '50%',
+  children: <Title title="Card title" />
+};
+
+export const CenteredFixedWidth = Template.bind({});
+CenteredFixedWidth.args = {
   centered: true,
   width: '50%',
   children: <Title title="Card title" />
