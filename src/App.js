@@ -1,13 +1,12 @@
 import React from 'react';
 import Card from './components/Card'
+import Title from './components/Title'
 import './App.scss'
 
 const App = () => {
   return (
-    <Card centered={true}>
-      <div>
-        <p>asdasd</p>
-      </div>
+    <Card>
+      <Title title="Card title"/>
     </Card>
   );
 }

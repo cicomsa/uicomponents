@@ -6,13 +6,21 @@ const getStyles = props => {
     width
   } = props
 
+  console.log(centered === true)
+
   switch (true) {
     case contentFit === true:
       styles.width = 'fit-content'
+      break
+    case width !== undefined && centered === true:
+      styles.width = width
+      styles.margin = '0 auto'
+      break
     case width !== undefined:
       styles.width = width
-    case centered === true:
-      styles.margin = '0 auto'
+      break
+    default:
+      return styles
   }
 
   return styles

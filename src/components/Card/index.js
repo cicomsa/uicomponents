@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types';
 import getStyles from './card'
 import './index.scss'
 
@@ -13,3 +14,11 @@ const Card = props => {
 }
 
 export default Card;
+
+Card.propTypes = {
+  children: PropTypes.object.isRequired
+};
+
+Card.defaultProps = {
+  children: ''
+}
