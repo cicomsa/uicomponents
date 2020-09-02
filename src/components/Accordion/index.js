@@ -2,17 +2,35 @@ import React, { useState, useRef } from 'react'
 import './index.scss'
 
 const Accordion = () => {
-  const [state, setState] = useState([])
-  const [heightState, setHeightState] = useState({
-    contentOne: '0',
-    contentTwo: '0'
-  });
+  // data
+  const accordion = useRef => [
+    {
+      title: 'contentOne',
+      buttonCopy: 'Open Content 1',
+      content: <p>Content 1</p>,
+      ref1: useRef(null) // for now - to be last
+    },
+    {
+      title: 'contentTwo',
+      buttonCopy: 'Open Content 2',
+      content: (
+        <>
+          <p>Content 2</p>
+          <p>Content 2</p>
+        </>
+      ),
+      ref2: useRef(null) // for now - to be last
+    }
+  ]
 
-  const content1 = useRef(null)
-  const content2 = useRef(null)
+  // logic
+  const [state, setState] = useState([])
+  const [heightState, setHeightState] = useState({});
 
   const handleClick = e => {
     const { name } = e.target
+    const section = accordion.find(section => section.title === name)
+    const ref = Object.keys(section).pop()
 
     if (state.includes(name)) {
       const array = [...state]
@@ -26,31 +44,37 @@ const Accordion = () => {
       setState([...state, name])
       setHeightState({
         ...heightState,
-        [name]: name === 'contentOne'
-          ? `${content1.current.scrollHeight}px`
-          : `${content2.current.scrollHeight}px`
-      });
+        [name]: `${section[ref].current.scrollHeight}px`
+      })
     }
   }
 
   return (
-    <>
-      <div className={state.includes('contentOne') ? 'open' : 'closed'}>
-        <button name="contentOne" onClick={handleClick}>Open content 1</button>
-        <div className="content" ref={content1}
-          style={{ height: `${heightState.contentOne}` }}>
-          Content 1
+    accordion.map(section => {
+      const ref = Object.keys(section).pop()
+
+      return (
+        <div
+          key={section.title}
+          className={state.includes(section.title) ? 'open' : 'closed'}
+        >
+          <button name={section.title} onClick={handleClick}>
+            {section.buttonCopy}
+          </button>
+          <div
+            className="content"
+            ref={section[ref]}
+            style={{
+              height: `${
+                heightState[section.title] ? heightState[section.title] : '0'
+                }`
+            }}
+          >
+            {section.content}
+          </div>
         </div>
-      </div>
-      <div className={state.includes('contentTwo') ? 'open' : 'closed'}>
-        <button name="contentTwo" onClick={handleClick}>Open content 2</button>
-        <div className="content" ref={content2}
-          style={{ height: `${heightState.contentTwo}` }}>
-          <p>Content 2</p>
-          <p>Content 2</p>
-        </div>
-      </div>
-    </>
+      )
+    })
   )
 }
 
