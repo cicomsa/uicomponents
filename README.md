@@ -2,4 +2,4 @@
 
 Project includes various UI components which can be displayed in Storybook.
 
-Run ```yarn``` to install the project dependencies and ```yarn storybook``` to see the components in Storybook
+Run ```yarn``` to install the project dependencies and ```yarn storybook``` to see the components in Storybook.
