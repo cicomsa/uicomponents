@@ -1,11 +1,11 @@
 import React from 'react';
 import Accordion from './components/Accordion'
-import Title from './components/Title'
+import accordionData from './components/Accordion/data'
 import './App.scss'
 
 const App = () => {
   return (
-    <Accordion />
+    <Accordion accordionData={accordionData} />
   );
 }
 

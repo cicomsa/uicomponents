@@ -1,14 +1,12 @@
 import React, { useState } from 'react'
 import './index.scss'
 
-const AccordionSection = ({ section, reference, accordion }) => {
+const AccordionSection = ({ section, reference, index }) => {
   const [state, setState] = useState([])
   const [height, setHeight] = useState({});
 
   const handleClick = e => {
     const { name } = e.target
-    const accordionSection = accordion.find(section => section.title === name)
-    const ref = Object.keys(accordionSection).pop()
 
     if (state.includes(name)) {
       const array = [...state]
@@ -22,7 +20,7 @@ const AccordionSection = ({ section, reference, accordion }) => {
       setState([...state, name])
       setHeight({
         ...height,
-        [name]: `${accordionSection[ref].current.scrollHeight}px`
+        [name]: `${reference.current.scrollHeight}px`
       })
     }
   }
@@ -38,7 +36,7 @@ const AccordionSection = ({ section, reference, accordion }) => {
       </button>
       <div
         className="accordion__content"
-        ref={section[reference]}
+        ref={reference}
         style={{
           height: `${
             height[section.title] ? height[section.title] : '0'
