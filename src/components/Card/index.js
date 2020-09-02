@@ -7,7 +7,6 @@ const Card = props => {
   const { children } = props
   const styles = getStyles(props)
 
-  console.log('cardProps', props, styles)
   return (
     <div className="card" style={styles}>{children}</div>
   );
