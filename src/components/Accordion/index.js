@@ -3,7 +3,7 @@ import './index.scss'
 
 const Accordion = () => {
   // data
-  const accordion = useRef => [
+  const accordion = [
     {
       title: 'contentOne',
       buttonCopy: 'Open Content 1',
