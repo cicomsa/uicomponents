@@ -1,8 +1,7 @@
 import React, { useState, useRef } from 'react'
-import './index.scss'
+import AccordionSection from '../AccordionSection';
 
 const Accordion = () => {
-  // data
   const accordion = [
     {
       title: 'contentOne',
@@ -23,56 +22,17 @@ const Accordion = () => {
     }
   ]
 
-  // logic
-  const [state, setState] = useState([])
-  const [heightState, setHeightState] = useState({});
-
-  const handleClick = e => {
-    const { name } = e.target
-    const section = accordion.find(section => section.title === name)
-    const ref = Object.keys(section).pop()
-
-    if (state.includes(name)) {
-      const array = [...state]
-      const index = state.indexOf(name);
-      if (index > -1) {
-        array.splice(index, 1);
-      }
-      setState(array)
-      setHeightState({ ...heightState, [name]: '0' })
-    } else {
-      setState([...state, name])
-      setHeightState({
-        ...heightState,
-        [name]: `${section[ref].current.scrollHeight}px`
-      })
-    }
-  }
-
   return (
     accordion.map(section => {
       const ref = Object.keys(section).pop()
 
       return (
-        <div
+        <AccordionSection
+          accordion={accordion}
+          section={section}
+          reference={ref}
           key={section.title}
-          className={state.includes(section.title) ? 'open' : 'closed'}
-        >
-          <button name={section.title} onClick={handleClick}>
-            {section.buttonCopy}
-          </button>
-          <div
-            className="content"
-            ref={section[ref]}
-            style={{
-              height: `${
-                heightState[section.title] ? heightState[section.title] : '0'
-                }`
-            }}
-          >
-            {section.content}
-          </div>
-        </div>
+        />
       )
     })
   )
