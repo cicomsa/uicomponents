@@ -9,4 +9,3 @@ export default {
 const Template = (args) => <Accordion />;
 
 export const Main = Template.bind({});
-
