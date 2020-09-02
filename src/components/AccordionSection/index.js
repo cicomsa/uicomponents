@@ -4,16 +4,16 @@ import './index.scss'
 
 const AccordionSection = ({ section, reference, index }) => {
   const [state, setState] = useState([])
-  const [height, setHeight] = useState({});
+  const [height, setHeight] = useState({})
 
   const handleClick = e => {
     const { name } = e.target
 
     if (state.includes(name)) {
       const array = [...state]
-      const index = state.indexOf(name);
+      const index = state.indexOf(name)
       if (index > -1) {
-        array.splice(index, 1);
+        array.splice(index, 1)
       }
       setState(array)
       setHeight({ ...height, [name]: '0' })
@@ -28,7 +28,6 @@ const AccordionSection = ({ section, reference, index }) => {
 
   return (
     <div
-      key={section.title}
       className={`
       accordion 
       ${state.includes(section.title) ? 'accordion--open' : 'accordion--closed'}`}
