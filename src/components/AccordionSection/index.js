@@ -25,6 +25,7 @@ const AccordionSection = ({ section, reference, index }) => {
       })
     }
   }
+
   return (
     <div
       key={section.title}

@@ -6,8 +6,6 @@ const getStyles = props => {
     width
   } = props
 
-  console.log(centered === true)
-
   switch (true) {
     case contentFit === true:
       styles.width = 'fit-content'
