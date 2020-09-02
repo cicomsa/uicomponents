@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import PropTypes from 'prop-types'
 import './index.scss'
 
 const AccordionSection = ({ section, reference, index }) => {
@@ -50,3 +51,15 @@ const AccordionSection = ({ section, reference, index }) => {
 }
 
 export default AccordionSection
+
+AccordionSection.propTypes = {
+  section: PropTypes.object.isRequired,
+  reference: PropTypes.object.isRequired,
+  index: PropTypes.number.isRequired
+}
+
+AccordionSection.defaultProps = {
+  section: {},
+  reference: { current: null },
+  index: 0
+}

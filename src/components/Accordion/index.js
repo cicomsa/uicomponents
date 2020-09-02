@@ -1,8 +1,9 @@
 import React, { createRef, useRef } from 'react'
-import AccordionSection from '../AccordionSection';
+import PropTypes from 'prop-types'
+import AccordionSection from '../AccordionSection'
 
 const Accordion = ({ accordionData }) => {
-  const elementsRef = useRef(accordionData.map(() => createRef()));
+  const elementsRef = useRef(accordionData.map(() => createRef()))
 
   return (
     accordionData.map((section, i) => {
@@ -19,3 +20,11 @@ const Accordion = ({ accordionData }) => {
 }
 
 export default Accordion
+
+Accordion.propTypes = {
+  accordionData: PropTypes.array.isRequired
+}
+
+Accordion.defaultProps = {
+  accordionData: []
+}
