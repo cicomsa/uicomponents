@@ -1,7 +1,14 @@
 .closed {
   .content {
-    height: 0;
-    visibility: hidden;
+    overflow: hidden;
+    transition: all 0.3s ease-in;
   }
 }
+
+.content {
+  transition: all 0.3s ease-in;
+  overflow: auto
+}
+
+
 
