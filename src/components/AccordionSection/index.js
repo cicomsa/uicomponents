@@ -10,12 +10,12 @@ const AccordionSection = ({ section, reference }) => {
     const { name } = e.target
 
     if (state.includes(name)) {
-      const array = [...state]
+      const stateContent = [...state]
       const index = state.indexOf(name)
 
-      if (index > -1) array.splice(index, 1)
+      if (index > -1) stateContent.splice(index, 1)
 
-      setState(array)
+      setState(stateContent)
       setHeight({ ...height, [name]: '0' })
     } else {
       setState([...state, name])
