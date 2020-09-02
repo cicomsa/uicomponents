@@ -11,7 +11,6 @@ const Accordion = ({ accordionData }) => {
         <AccordionSection
           section={section}
           reference={elementsRef.current[i]}
-          index={i}
           key={section.title}
         />
       )

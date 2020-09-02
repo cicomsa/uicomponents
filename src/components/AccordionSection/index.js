@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import './index.scss'
 
-const AccordionSection = ({ section, reference, index }) => {
+const AccordionSection = ({ section, reference }) => {
   const [state, setState] = useState([])
   const [height, setHeight] = useState({})
 
@@ -12,9 +12,9 @@ const AccordionSection = ({ section, reference, index }) => {
     if (state.includes(name)) {
       const array = [...state]
       const index = state.indexOf(name)
-      if (index > -1) {
-        array.splice(index, 1)
-      }
+
+      if (index > -1) array.splice(index, 1)
+
       setState(array)
       setHeight({ ...height, [name]: '0' })
     } else {
@@ -54,12 +54,10 @@ export default AccordionSection
 
 AccordionSection.propTypes = {
   section: PropTypes.object.isRequired,
-  reference: PropTypes.object.isRequired,
-  index: PropTypes.number.isRequired
+  reference: PropTypes.object.isRequired
 }
 
 AccordionSection.defaultProps = {
   section: {},
   reference: { current: null },
-  index: 0
 }
